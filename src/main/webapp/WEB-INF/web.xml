@@ -1,0 +1,66 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>File Upload Servlet</display-name>
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>uk.ac.cam.arb33.filelogger.UploadServlet</servlet-class>
+		<init-param>
+			<!-- Token supplied by client to enable upload of file data -->
+			<param-name>upload.token</param-name>
+			<param-value>r7vilxaq0qwd900wzycy</param-value>
+		</init-param>
+		<init-param>
+			<!-- Web directory for displaying and downloading data -->
+			<param-name>web.data.directory</param-name>
+			<param-value>/data</param-value>
+		</init-param>
+		<init-param>
+			<!-- Web directory for uploading data -->
+			<param-name>web.upload.directory</param-name>
+			<param-value>/upload</param-value>
+		</init-param>
+			</servlet>
+	<servlet>
+		<servlet-name>Data</servlet-name>
+		<servlet-class>uk.ac.cam.arb33.filelogger.DataServlet</servlet-class>
+		<init-param>
+			<!-- Web directory for displaying and downloading data -->
+			<param-name>web.data.directory</param-name>
+			<param-value>/data</param-value>
+		</init-param>
+		<init-param>
+			<!-- Web directory for uploading data -->
+			<param-name>web.upload.directory</param-name>
+			<param-value>/upload</param-value>
+		</init-param>
+			</servlet>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Data</servlet-name>
+		<url-pattern>/data/*</url-pattern>
+	</servlet-mapping>
+	<!-- Configuration required in servlet container, e.g. conf/tomcat-users.xml -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>
+			</web-resource-name>
+			<url-pattern>/data/</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>download</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>Login for file download</realm-name>
+	</login-config>
+	<security-role>
+		<role-name>download</role-name>
+	</security-role>
+</web-app>

@@ -71,7 +71,7 @@ public class UploadServlet extends ServletBase {
 			if (complete == null)
 				complete = "";
 			else
-				complete = String.format(htmlCompleteMsg, complete, webDataDir, complete);
+				complete = String.format(htmlCompleteMsg, webDataDir, complete, complete);
 			resp.getWriter().write(String.format(htmlUploadForm, complete, webDataDir));
 		} catch (IOException e) {
 			throw new ServletException("Cannot write data to client.", e);

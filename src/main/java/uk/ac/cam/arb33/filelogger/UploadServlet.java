@@ -57,7 +57,11 @@ public class UploadServlet extends ServletBase {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		uploadToken = resolveInitParameter(config, "upload.token");
+		//In Tomcat, configure by writing the following into conf/context.xml:
+		//<Context>
+		//<Parameter name="uk.ac.cam.arb33.filelogger.upload.token" value="XXXXXXX"/>
+		//</Context>
+		uploadToken = getServletContext().getInitParameter("uk.ac.cam.arb33.filelogger.upload.token");
 	}
 
 	@Override

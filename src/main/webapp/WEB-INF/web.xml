@@ -8,11 +8,6 @@
 		<servlet-name>Upload</servlet-name>
 		<servlet-class>uk.ac.cam.arb33.filelogger.UploadServlet</servlet-class>
 		<init-param>
-			<!-- Token supplied by client to enable upload of file data -->
-			<param-name>upload.token</param-name>
-			<param-value>r7vilxaq0qwd900wzycy</param-value>
-		</init-param>
-		<init-param>
 			<!-- Web directory for displaying and downloading data -->
 			<param-name>web.data.directory</param-name>
 			<param-value>/data</param-value>

@@ -50,7 +50,7 @@ public class UploadServlet extends ServletBase {
 					"<tr><td></td><td><input type=\"submit\" name=\"submit\"/></td></tr></table>" +
 					"</form></body></html>";
 	private final String htmlCompleteMsg = 
-			"<p>Uploaded: <a href=\"" + webDataDir + "%s\">%s</a></p>";
+			"<p>Uploaded: <a href=\"%s/%s\">%s</a></p>";
 
 	private String uploadToken;
 
@@ -71,7 +71,7 @@ public class UploadServlet extends ServletBase {
 			if (complete == null)
 				complete = "";
 			else
-				complete = String.format(htmlCompleteMsg, complete, complete);
+				complete = String.format(htmlCompleteMsg, complete, webDataDir, complete);
 			resp.getWriter().write(String.format(htmlUploadForm, complete, webDataDir));
 		} catch (IOException e) {
 			throw new ServletException("Cannot write data to client.", e);
